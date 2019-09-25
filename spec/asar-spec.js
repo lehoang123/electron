@@ -93,7 +93,7 @@ describe('asar package', function () {
       })
 
       it('reads a normal file with unpacked files', function () {
-        const p = path.join(fixtures, 'asar', 'unpack.asar', 'a.txt')
+        const p = path.join(fixtures, 'test.asar', 'unpack.asar', 'a.txt')
         expect(fs.readFileSync(p).toString().trim()).to.equal('a')
       })
     })
@@ -202,7 +202,7 @@ describe('asar package', function () {
       })
 
       it('copies a unpacked file', function (done) {
-        const p = path.join(fixtures, 'asar', 'unpack.asar', 'a.txt')
+        const p = path.join(fixtures, 'test.asar', 'unpack.asar', 'a.txt')
         const dest = temp.path()
         fs.copyFile(p, dest, function (err) {
           expect(err).to.be.null()
@@ -221,7 +221,7 @@ describe('asar package', function () {
       })
 
       it('copies a unpacked file', async function () {
-        const p = path.join(fixtures, 'asar', 'unpack.asar', 'a.txt')
+        const p = path.join(fixtures, 'test.asar', 'unpack.asar', 'a.txt')
         const dest = temp.path()
         await fs.promises.copyFile(p, dest)
         expect(fs.readFileSync(p).equals(fs.readFileSync(dest))).to.be.true()
@@ -237,7 +237,7 @@ describe('asar package', function () {
       })
 
       it('copies a unpacked file', function () {
-        const p = path.join(fixtures, 'asar', 'unpack.asar', 'a.txt')
+        const p = path.join(fixtures, 'test.asar', 'unpack.asar', 'a.txt')
         const dest = temp.path()
         fs.copyFileSync(p, dest)
         expect(fs.readFileSync(p).equals(fs.readFileSync(dest))).to.be.true()
@@ -1033,7 +1033,7 @@ describe('asar package', function () {
       })
 
       it('allows write mode for unpacked files', function (done) {
-        const p = path.join(fixtures, 'asar', 'unpack.asar', 'a.txt')
+        const p = path.join(fixtures, 'test.asar', 'unpack.asar', 'a.txt')
         fs.access(p, fs.constants.R_OK | fs.constants.W_OK, function (err) {
           expect(err).to.be.null()
           done()
@@ -1058,7 +1058,7 @@ describe('asar package', function () {
       })
 
       it('allows write mode for unpacked files', async function () {
-        const p = path.join(fixtures, 'asar', 'unpack.asar', 'a.txt')
+        const p = path.join(fixtures, 'test.asar', 'unpack.asar', 'a.txt')
         await fs.promises.access(p, fs.constants.R_OK | fs.constants.W_OK)
       })
     })
@@ -1086,7 +1086,7 @@ describe('asar package', function () {
       })
 
       it('allows write mode for unpacked files', function () {
-        const p = path.join(fixtures, 'asar', 'unpack.asar', 'a.txt')
+        const p = path.join(fixtures, 'test.asar', 'unpack.asar', 'a.txt')
         expect(() => {
           fs.accessSync(p, fs.constants.R_OK | fs.constants.W_OK)
         }).to.not.throw()
@@ -1204,7 +1204,7 @@ describe('asar package', function () {
       })
 
       it('reads a normal file with unpacked files', function () {
-        const p = path.join(fixtures, 'asar', 'unpack.asar', 'a.txt')
+        const p = path.join(fixtures, 'test.asar', 'unpack.asar', 'a.txt')
         expect(internalModuleReadJSON(p).toString().trim()).to.equal('a')
       })
     })
@@ -1362,7 +1362,7 @@ describe('asar package', function () {
     })
 
     it('can request a file in package with unpacked files', function (done) {
-      const p = path.resolve(fixtures, 'asar', 'unpack.asar', 'a.txt')
+      const p = path.resolve(fixtures, 'test.asar', 'unpack.asar', 'a.txt')
       $.get('file://' + p, function (data) {
         expect(data.trim()).to.equal('a')
         done()
@@ -1533,7 +1533,7 @@ describe('asar package', function () {
     })
 
     it('reads image from asar archive with unpacked files', function () {
-      const p = path.join(fixtures, 'asar', 'unpack.asar', 'atom.png')
+      const p = path.join(fixtures, 'test.asar', 'unpack.asar', 'atom.png')
       const logo = nativeImage.createFromPath(p)
       expect(logo.getSize()).to.deep.equal({
         width: 1024,
